@@ -29,7 +29,10 @@ class NotesViewModel @Inject constructor(
             }
             is NotesEvent.Order -> TODO()
             is NotesEvent.RestoreNote -> {
-
+                viewModelScope.launch {
+                    noteUseCases.addNoteUseCase(recentlyDeletedNote ?: return@launch)
+                    recentlyDeletedNote = null
+                }
             }
             is NotesEvent.ToggleOrderSectionVisible -> {
                 _state.value =

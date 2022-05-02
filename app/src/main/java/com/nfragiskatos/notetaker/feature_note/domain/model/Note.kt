@@ -3,6 +3,7 @@ package com.nfragiskatos.notetaker.feature_note.domain.model
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.nfragiskatos.notetaker.ui.theme.*
+import java.lang.Exception
 
 @Entity
 data class Note(
@@ -15,4 +16,6 @@ data class Note(
     companion object {
         val noteColors = listOf(RedOrange, LightGreen, Violet, BabyBlue, RedPink)
     }
+
+    class InvalidNoteException(message: String) : Exception(message)
 }
