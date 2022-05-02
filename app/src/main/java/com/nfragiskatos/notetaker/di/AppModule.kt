@@ -5,10 +5,7 @@ import androidx.room.Room
 import com.nfragiskatos.notetaker.feature_note.data.data_source.NoteDatabase
 import com.nfragiskatos.notetaker.feature_note.data.repository.NoteRepositoryImpl
 import com.nfragiskatos.notetaker.feature_note.domain.repository.NoteRepository
-import com.nfragiskatos.notetaker.feature_note.domain.use_case.AddNoteUseCase
-import com.nfragiskatos.notetaker.feature_note.domain.use_case.DeleteNoteUseCase
-import com.nfragiskatos.notetaker.feature_note.domain.use_case.GetNotesUseCase
-import com.nfragiskatos.notetaker.feature_note.domain.use_case.NoteUseCases
+import com.nfragiskatos.notetaker.feature_note.domain.use_case.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -42,7 +39,8 @@ object AppModule {
         return NoteUseCases(
             getNotesUseCase = GetNotesUseCase(repository),
             deleteNoteUseCase = DeleteNoteUseCase(repository),
-            addNoteUseCase = AddNoteUseCase(repository)
+            addNoteUseCase = AddNoteUseCase(repository),
+            getNoteUseCase = GetNoteUseCase(repository)
         )
     }
 }
