@@ -38,24 +38,27 @@ class AddEditNoteViewModel @Inject constructor(
     private var currentNoteId: Int? = null
 
     init {
-        savedStateHandle.get<Int>("noteId")?.let { noteId -> {
-            if (noteId != -1) {
-                viewModelScope.launch {
-                    noteUseCases.getNoteUseCase(noteId)?.also { note ->
-                        currentNoteId = note.id
-                        _noteTitle.value = noteTitle.value.copy(
-                            text = note.title,
-                            isHintVisible = false
-                        )
-                        _noteContent.value = noteContent.value.copy(
-                            text = note.content,
-                            isHintVisible = false
-                        )
-                        _noteColor.value = note.color
+        savedStateHandle.get<Int>("noteId")
+            ?.let { noteId ->
+                if (noteId != -1) {
+                    viewModelScope.launch {
+                        noteUseCases.getNoteUseCase(noteId)
+                            ?.also { note ->
+                                currentNoteId = note.id
+                                _noteTitle.value = noteTitle.value.copy(
+                                    text = note.title,
+                                    isHintVisible = false
+                                )
+                                _noteContent.value = noteContent.value.copy(
+                                    text = note.content,
+                                    isHintVisible = false
+                                )
+                                _noteColor.value = note.color
+                            }
                     }
                 }
+
             }
-        } }
     }
 
     fun onEvent(event: AddEditNoteEvent) {
