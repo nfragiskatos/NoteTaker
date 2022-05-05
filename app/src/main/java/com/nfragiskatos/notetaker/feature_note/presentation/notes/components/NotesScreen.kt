@@ -13,9 +13,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.nfragiskatos.notetaker.core.util.TestTags
 import com.nfragiskatos.notetaker.feature_note.presentation.notes.NotesEvent
 import com.nfragiskatos.notetaker.feature_note.presentation.notes.NotesViewModel
 import com.nfragiskatos.notetaker.feature_note.presentation.util.Screen
@@ -76,7 +78,8 @@ fun NotesScreen(
             ) {
                 OrderSection(modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp),
+                    .padding(16.dp)
+                    .testTag(TestTags.ORDER_SECTION),
                     noteOrderBy = state.noteOrderBy,
                     onOrderChange = {
                         viewModel.onEvent(NotesEvent.Order(it))
