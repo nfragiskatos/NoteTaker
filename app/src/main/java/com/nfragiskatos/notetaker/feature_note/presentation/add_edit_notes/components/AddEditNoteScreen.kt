@@ -22,6 +22,7 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.nfragiskatos.notetaker.core.util.TestTags
 import com.nfragiskatos.notetaker.feature_note.domain.model.Note
 import com.nfragiskatos.notetaker.feature_note.presentation.add_edit_notes.AddEditNoteEvent
 import com.nfragiskatos.notetaker.feature_note.presentation.add_edit_notes.AddEditNoteViewModel
@@ -125,6 +126,7 @@ fun AddEditNoteScreen(
                 isHintVisible = titleState.isHintVisible,
                 isSingleLine = true,
                 textStyle = MaterialTheme.typography.h5,
+                testTag = TestTags.TITLE_TEXT_FIELD,
                 onValueChange = { viewModel.onEvent(AddEditNoteEvent.EnteredTitle(it)) },
                 onFocusChange = { viewModel.onEvent(AddEditNoteEvent.ChangeTitleFocus(it)) }
             )
@@ -135,6 +137,7 @@ fun AddEditNoteScreen(
                 isHintVisible = contentState.isHintVisible,
                 textStyle = MaterialTheme.typography.body1,
                 modifier = Modifier.fillMaxHeight(),
+                testTag = TestTags.CONTENT_TEXT_FIELD,
                 onValueChange = { viewModel.onEvent(AddEditNoteEvent.EnteredContent(it)) },
                 onFocusChange = { viewModel.onEvent(AddEditNoteEvent.ChangeContentFocus(it)) }
             )
