@@ -1,4 +1,4 @@
-package com.nfragiskatos.notetaker.feature_note.data.data_source
+package com.nfragiskatos.notetaker.feature_note.data.data_source.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

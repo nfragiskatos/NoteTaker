@@ -1,6 +1,6 @@
 package com.nfragiskatos.notetaker.feature_note.data.repository
 
-import com.nfragiskatos.notetaker.feature_note.data.data_source.NoteDao
+import com.nfragiskatos.notetaker.feature_note.data.data_source.local.NoteDao
 import com.nfragiskatos.notetaker.feature_note.domain.model.Note
 import com.nfragiskatos.notetaker.feature_note.domain.repository.NoteRepository
 import kotlinx.coroutines.flow.Flow
