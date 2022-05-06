@@ -119,4 +119,46 @@ class NotesEndToEndTest {
         composeRule.onNodeWithText("TEST-TITLE2")
             .assertIsDisplayed()
     }
+
+    @Test
+    fun saveNewNotes_orderByTitleDescending() {
+        for (i in 1..3) {
+            // NotesScreen
+            // - Click on FAB to navigate to add note screen
+            composeRule.onNodeWithContentDescription("Add Note")
+                .performClick()
+
+            // AddEditNotesScreen
+            // - add input to title and content text fields
+            // - save
+            composeRule.onNodeWithTag(TestTags.TITLE_TEXT_FIELD)
+                .performTextInput("TEST-TITLE-$i")
+            composeRule.onNodeWithTag(TestTags.CONTENT_TEXT_FIELD)
+                .performTextInput("TEST-CONTENT-$i")
+            composeRule.onNodeWithContentDescription("Save Note")
+                .performClick()
+        }
+
+        composeRule.onNodeWithText("TEST-TITLE-1")
+            .assertIsDisplayed()
+        composeRule.onNodeWithText("TEST-TITLE-2")
+            .assertIsDisplayed()
+        composeRule.onNodeWithText("TEST-TITLE-3")
+            .assertIsDisplayed()
+
+        composeRule.onNodeWithContentDescription("Sort")
+            .performClick()
+
+        composeRule.onNodeWithContentDescription("Title")
+            .performClick()
+        composeRule.onNodeWithContentDescription("Descending")
+            .performClick()
+
+        composeRule.onAllNodesWithTag(TestTags.NOTE_ITEM)[0]
+            .assertTextContains("TEST-TITLE-3")
+        composeRule.onAllNodesWithTag(TestTags.NOTE_ITEM)[1]
+            .assertTextContains("TEST-TITLE-2")
+        composeRule.onAllNodesWithTag(TestTags.NOTE_ITEM)[2]
+            .assertTextContains("TEST-TITLE-1")
+    }
 }
