@@ -5,9 +5,9 @@ import androidx.room.PrimaryKey
 import com.nfragiskatos.notetaker.ui.theme.*
 import java.lang.Exception
 
-@Entity
+
 data class Note(
-    @PrimaryKey val id: Int? = null,
+    val id: Int?,
     val title: String,
     val content: String,
     val timestamp: Long,

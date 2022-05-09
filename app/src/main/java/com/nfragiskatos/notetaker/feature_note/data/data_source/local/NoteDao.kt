@@ -1,21 +1,20 @@
 package com.nfragiskatos.notetaker.feature_note.data.data_source.local
 
 import androidx.room.*
-import com.nfragiskatos.notetaker.feature_note.domain.model.Note
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface NoteDao {
 
-    @Query("SELECT * FROM note")
-    fun getNotes(): Flow<List<Note>>
+    @Query("SELECT * FROM noteEntity")
+    fun getNotes(): Flow<List<NoteEntity>>
 
-    @Query("SELECT * FROM note WHERE id = :id")
-    suspend fun getNoteById(id: Int) : Note?
+    @Query("SELECT * FROM noteEntity WHERE id = :id")
+    suspend fun getNoteById(id: Int): NoteEntity?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertNote(note: Note)
+    suspend fun insertNote(noteEntity: NoteEntity)
 
     @Delete
-    suspend fun deleteNote(note: Note)
+    suspend fun deleteNote(noteEntity: NoteEntity)
 }
