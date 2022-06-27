@@ -1,9 +1,6 @@
 # NoteTaker
 Simple note taking app for practicing Android development.
 
-## NoteTaker
-StockMarketViewer is an example app that uses the Alpha Vantage API to pull basic company stock market information for display
-
 ### Patterns / Technologies
 - MVVM Architecture
 - Compose
